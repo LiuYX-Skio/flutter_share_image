@@ -5,4 +5,5 @@ class FlutterShareImage {
   Future<String?> getPlatformVersion() {
     return FlutterShareImagePlatform.instance.getPlatformVersion();
   }
+
 }
