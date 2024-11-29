@@ -22,7 +22,7 @@ abstract class ShareImagePlatform extends PlatformInterface {
     _instance = instance;
   }
 
-  Future<int?> loadImage() {
+  Future<int?> loadImage(String? imageUrl,int width,int height,int diskCacheType,bool isSkipMemoryCache) {
     throw UnimplementedError('platformVersion() has not been implemented.');
   }
 }

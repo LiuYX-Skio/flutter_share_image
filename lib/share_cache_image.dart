@@ -1,13 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_share_image/share_cache_manager.dart';
 
-
 class ShareCacheImage extends StatefulWidget {
+  final int width;
+  final int height;
+  final int diskCacheType;
+  final bool isSkipMemoryCache;
+  final String? imageUrl;
 
-  ShareCacheImage({super.key, this.width = 200, this.height = 200});
-
-  var width;
-  var height;
+  const ShareCacheImage({
+    super.key,
+    this.width = 0,
+    this.height = 0,
+    this.isSkipMemoryCache = false,
+    this.imageUrl = "",
+    this.diskCacheType = 0,
+  });
 
   @override
   State<StatefulWidget> createState() {
@@ -27,26 +35,24 @@ class _ShareCacheState extends State<ShareCacheImage> {
   }
 
   void initPlugin() async {
-   int? textureId = await _shareCacheManager.loadImage();
-   print("textureId=$textureId");
+    int? textureId = await _shareCacheManager.loadImage(
+        widget.imageUrl,
+        widget.width,
+        widget.height,
+        widget.diskCacheType,
+        widget.isSkipMemoryCache);
     setState(() {
       _textureId = textureId;
     });
   }
 
   @override
-  Future<void> dispose() async {
-    super.dispose();
-    // _externalPlugin.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
         width: widget.width.toDouble(),
         height: widget.height.toDouble(),
         child: _textureId != null
             ? Texture(textureId: _textureId ?? 0)
-            : Container(color: Colors.blue));
+            : Container(color: Colors.white));
   }
 }
