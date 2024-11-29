@@ -150,4 +150,9 @@ class ImageLoadTask : IImageLoadTask {
             })
     }
 
+
+    override fun release() {
+        handler.removeCallbacksAndMessages(null)
+    }
+
 }

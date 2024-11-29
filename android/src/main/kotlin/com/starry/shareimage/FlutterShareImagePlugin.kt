@@ -50,6 +50,7 @@ class FlutterShareImagePlugin : FlutterPlugin, MethodChannel.MethodCallHandler {
     }
 
     override fun onDetachedFromEngine(binding: FlutterPlugin.FlutterPluginBinding) {
+        imageLoadTask.release()
         surfaceEngine.release()
         channel.setMethodCallHandler(null)
     }

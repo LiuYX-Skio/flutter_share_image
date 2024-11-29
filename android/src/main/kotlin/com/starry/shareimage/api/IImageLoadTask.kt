@@ -49,4 +49,6 @@ interface IImageLoadTask {
         block: (Bitmap) -> Unit
     )
 
+    fun release()
+
 }
