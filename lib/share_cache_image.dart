@@ -41,9 +41,11 @@ class _ShareCacheState extends State<ShareCacheImage> {
         widget.height,
         widget.diskCacheType,
         widget.isSkipMemoryCache);
-    setState(() {
-      _textureId = textureId;
-    });
+    if (mounted) {
+      setState(() {
+        _textureId = textureId;
+      });
+    }
   }
 
   @override
