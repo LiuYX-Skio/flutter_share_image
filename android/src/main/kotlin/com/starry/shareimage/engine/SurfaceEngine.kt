@@ -17,12 +17,11 @@ class SurfaceEngine : ISurfaceEngine {
     override fun createSurfaceTexture(flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
         textureRegistry = flutterPluginBinding.textureRegistry
         context = flutterPluginBinding.applicationContext
-        surfaceTexture = textureRegistry?.createSurfaceTexture()
-        textureId = (surfaceTexture?.id() ?: -1).toInt()
     }
-
     override fun loadImageTexture(bitmap: Bitmap, width: Int, height: Int) {
         textureRegistry?.apply {
+            surfaceTexture = textureRegistry?.createSurfaceTexture()
+            textureId = (surfaceTexture?.id() ?: -1).toInt()
             val surface = Surface(surfaceTexture?.surfaceTexture()?.apply {
                 setDefaultBufferSize(width, height)
             })
