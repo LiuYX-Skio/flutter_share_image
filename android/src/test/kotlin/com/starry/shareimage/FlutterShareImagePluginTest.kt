@@ -1,4 +1,4 @@
-package com.example.flutter_share_image
+package com.starry.shareimage
 
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel

@@ -1,29 +1,28 @@
+import 'package:flutter_share_image/share_image_method_channel.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
-import 'flutter_share_image_method_channel.dart';
 
-abstract class FlutterShareImagePlatform extends PlatformInterface {
+abstract class ShareImagePlatform extends PlatformInterface {
   /// Constructs a FlutterShareImagePlatform.
-  FlutterShareImagePlatform() : super(token: _token);
+  ShareImagePlatform() : super(token: _token);
 
   static final Object _token = Object();
 
-  static FlutterShareImagePlatform _instance = MethodChannelFlutterShareImage();
+  static ShareImagePlatform _instance = ShareImageMethodChannel();
 
-  /// The default instance of [FlutterShareImagePlatform] to use.
   ///
   /// Defaults to [MethodChannelFlutterShareImage].
-  static FlutterShareImagePlatform get instance => _instance;
+  static ShareImagePlatform get instance => _instance;
 
   /// Platform-specific implementations should set this with their own
   /// platform-specific class that extends [FlutterShareImagePlatform] when
   /// they register themselves.
-  static set instance(FlutterShareImagePlatform instance) {
+  static set instance(ShareImagePlatform instance) {
     PlatformInterface.verifyToken(instance, _token);
     _instance = instance;
   }
 
-  Future<String?> getPlatformVersion() {
+  Future<int?> loadImage() {
     throw UnimplementedError('platformVersion() has not been implemented.');
   }
 }

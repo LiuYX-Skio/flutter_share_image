@@ -35,7 +35,7 @@ flutter:
   plugin:
     platforms:
       android:
-        package: com.example.flutter_share_image
+        package: com.starry.shareimage
         pluginClass: FlutterShareImagePlugin
       ios:
         pluginClass: FlutterShareImagePlugin
